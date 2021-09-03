@@ -16,7 +16,23 @@ const searchResult = bookinfo =>{
     
     booksDetails.forEach(details => {
         console.log(details.title);
-        const bookDesign = document.getElementById('result-section');
-        
+        const bookDesign = document.getElementById('book-show');
+        const div = document.createElement('col-md-4');
+        div.innerHTML = `
+                <div class="card mt-3" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${details.title}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><span class='list-style'>Author : </span>${details.author_name}</li>
+                        <li class="list-group-item"><span class='list-style'>Published Date : </span>javascript</span>Dapibus ac facilisis in</li>
+                        <li class="list-group-item"><span class='list-style'>First Published Date: </span>Vestibulum at eros</li>
+                    </ul>
+                </div>
+
+        `
+        bookDesign.appendChild(div);
+
     });
 }
