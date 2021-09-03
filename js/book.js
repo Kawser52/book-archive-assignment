@@ -5,23 +5,24 @@ const loadBook =()=>{
     const inputValue = getInputData.value;
     getInputData.value = '';
     if(inputValue === ''){
-        document.getElementById('error-message').style.display = 'block';     
+        document.getElementById('error-message').style.display = 'block';  
     } else{
     const url = `http://openlibrary.org/search.json?q=${inputValue}`
     fetch(url)
     .then(res => res.json())
     .then(data => searchResult(data))
-    }
-
-   
+    } 
 }
-
 // Search Result Section
 const searchResult = bookinfo =>{
+    document.getElementById('error-message').style.display = 'none';
     const booksDetails = bookinfo.docs;
     let bookNumber = bookinfo.numFound;
     let searchBookNumber = document.getElementById('result-section');
-    searchBookNumber.innerHTML = `<h4>Total Search Result:${bookNumber}</h4>`
+    if(bookNumber==0){
+        searchBookNumber.innerHTML = `<h4>No Result Found</h4>`
+    }else{
+         searchBookNumber.innerHTML = `<h4>Total Search Result:${bookNumber}</h4>`
     const clearData= document.getElementById('book-show');
     clearData.textContent = '';
     booksDetails.forEach(details => {
@@ -39,10 +40,11 @@ const searchResult = bookinfo =>{
                         <li class="list-group-item"><span class='list-style'>First Published Date: </span>${details.first_publish_year}</li>
                     </ul>
                 </div>
-
         `
         bookDesign.appendChild(div); 
 
     });
 }
+    }
+   
 
