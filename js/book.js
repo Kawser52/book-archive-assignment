@@ -1,18 +1,18 @@
 // fetch Data
-document.getElementById('error-message').style.display = 'none';
+document.getElementById('error-message').style.display='none';
 const loadBook =()=>{
     const getInputData= document.getElementById('search-input');
     const inputValue = getInputData.value;
     getInputData.value = '';
-    document.getElementById('error-message').style.display = 'none';
     if(inputValue === ''){
-        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('error-message').style.display = 'block';     
     } else{
     const url = `http://openlibrary.org/search.json?q=${inputValue}`
     fetch(url)
     .then(res => res.json())
     .then(data => searchResult(data))
     }
+
    
 }
 
@@ -22,7 +22,7 @@ const searchResult = bookinfo =>{
     let bookNumber = bookinfo.numFound;
     let searchBookNumber = document.getElementById('result-section');
     searchBookNumber.innerHTML = `<h4>Total Search Result:${bookNumber}</h4>`
-     const clearData= document.getElementById('book-show');
+    const clearData= document.getElementById('book-show');
     clearData.textContent = '';
     booksDetails.forEach(details => {
         const bookDesign = document.getElementById('book-show');
@@ -41,11 +41,8 @@ const searchResult = bookinfo =>{
                 </div>
 
         `
-        bookDesign.appendChild(div);
+        bookDesign.appendChild(div); 
 
     });
 }
 
-function errorCheck(){
-
-};
