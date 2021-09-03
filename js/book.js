@@ -1,3 +1,4 @@
+// fetch Data
 const loadBook =()=>{
     const getInputData= document.getElementById('search-input');
     const inputValue = getInputData.value;
@@ -7,6 +8,8 @@ const loadBook =()=>{
     .then(res => res.json())
     .then(data => searchResult(data))
 }
+
+// Search Result Section
 const searchResult = bookinfo =>{
     console.log(bookinfo);
     const booksDetails = bookinfo.docs;
@@ -26,8 +29,8 @@ const searchResult = bookinfo =>{
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><span class='list-style'>Author : </span>${details.author_name}</li>
-                        <li class="list-group-item"><span class='list-style'>Published Date : </span>javascript</span>Dapibus ac facilisis in</li>
-                        <li class="list-group-item"><span class='list-style'>First Published Date: </span>Vestibulum at eros</li>
+                        <li class="list-group-item"><span class='list-style'>Published Date : </span>${details.publish_date}</span></li>
+                        <li class="list-group-item"><span class='list-style'>First Published Date: </span>${details.first_publish_year}</li>
                     </ul>
                 </div>
 
