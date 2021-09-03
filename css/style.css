@@ -1,7 +1,9 @@
 #book-show{
 display: grid;
 grid-template-columns: repeat(4,1fr);
+padding: 0px 50px;
 }
+
 .list-style{
     font-weight: bold;
     color: rgb(2, 2, 2);
